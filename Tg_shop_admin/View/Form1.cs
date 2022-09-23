@@ -25,7 +25,7 @@ namespace Tg_shop_admin
         public Form1()
         {
             InitializeComponent();
-            //productController = new ProductController(listBox1,pictureBox1);
+            productController = new ProductController(listBox1,pictureBox1,pictureBox2);
             //productController.show_picture(0);
 
 
@@ -39,13 +39,19 @@ namespace Tg_shop_admin
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            productController.show_picture(listBox1.SelectedIndex);
+            productController.show_pictures(listBox1.SelectedIndex);
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
            telegramController = new TelegramController();
+        }
+
+        public void button2_Click(object sender, EventArgs e)
+        {
+            //productController.Regestration();
+            productController.parse_product();
         }
     }
 }
