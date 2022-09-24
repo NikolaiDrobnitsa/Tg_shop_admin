@@ -50,6 +50,10 @@
             this.EditsButton = new System.Windows.Forms.Button();
             this.EditpictureBox = new System.Windows.Forms.PictureBox();
             this.EditCostTextBox = new System.Windows.Forms.TextBox();
+            this.Admin_listBox = new System.Windows.Forms.ListBox();
+            this.admins_textBox = new System.Windows.Forms.TextBox();
+            this.addAdminbutton = new System.Windows.Forms.Button();
+            this.DelAdmin_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBoxAddProd.SuspendLayout();
@@ -277,11 +281,49 @@
             this.EditCostTextBox.TabIndex = 8;
             this.EditCostTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EditCostTextBox_KeyPress);
             // 
+            // Admin_listBox
+            // 
+            this.Admin_listBox.FormattingEnabled = true;
+            this.Admin_listBox.Location = new System.Drawing.Point(537, 288);
+            this.Admin_listBox.Name = "Admin_listBox";
+            this.Admin_listBox.Size = new System.Drawing.Size(120, 95);
+            this.Admin_listBox.TabIndex = 15;
+            // 
+            // admins_textBox
+            // 
+            this.admins_textBox.Location = new System.Drawing.Point(663, 300);
+            this.admins_textBox.Name = "admins_textBox";
+            this.admins_textBox.Size = new System.Drawing.Size(100, 20);
+            this.admins_textBox.TabIndex = 16;
+            // 
+            // addAdminbutton
+            // 
+            this.addAdminbutton.Location = new System.Drawing.Point(663, 327);
+            this.addAdminbutton.Name = "addAdminbutton";
+            this.addAdminbutton.Size = new System.Drawing.Size(101, 23);
+            this.addAdminbutton.TabIndex = 17;
+            this.addAdminbutton.Text = "button2";
+            this.addAdminbutton.UseVisualStyleBackColor = true;
+            this.addAdminbutton.Click += new System.EventHandler(this.addAdminbutton_Click);
+            // 
+            // DelAdmin_button
+            // 
+            this.DelAdmin_button.Location = new System.Drawing.Point(663, 356);
+            this.DelAdmin_button.Name = "DelAdmin_button";
+            this.DelAdmin_button.Size = new System.Drawing.Size(101, 23);
+            this.DelAdmin_button.TabIndex = 18;
+            this.DelAdmin_button.Text = "button2";
+            this.DelAdmin_button.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 450);
+            this.Controls.Add(this.DelAdmin_button);
+            this.Controls.Add(this.addAdminbutton);
+            this.Controls.Add(this.admins_textBox);
+            this.Controls.Add(this.Admin_listBox);
             this.Controls.Add(this.EditgroupBox1);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.DeleteButton);
@@ -301,6 +343,7 @@
             this.EditgroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EditpictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -328,6 +371,10 @@
         private System.Windows.Forms.Button EditsButton;
         public System.Windows.Forms.PictureBox EditpictureBox;
         private System.Windows.Forms.TextBox EditCostTextBox;
+        private System.Windows.Forms.ListBox Admin_listBox;
+        private System.Windows.Forms.TextBox admins_textBox;
+        private System.Windows.Forms.Button addAdminbutton;
+        private System.Windows.Forms.Button DelAdmin_button;
     }
 }
 

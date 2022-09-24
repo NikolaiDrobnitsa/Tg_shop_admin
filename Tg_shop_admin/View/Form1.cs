@@ -63,7 +63,7 @@ namespace Tg_shop_admin
 
         private void button3_Click(object sender, EventArgs e)
         {
-           telegramController = new TelegramController();
+           telegramController = new TelegramController(productController.prod);
             GC.Collect();
         }
 
@@ -131,6 +131,11 @@ namespace Tg_shop_admin
                 productController.Edit_info(EditInfoTextBox.Text, Convert.ToInt32(EditCostTextBox.Text),listBox1.SelectedIndex);
             }
             
+        }
+
+        private void addAdminbutton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

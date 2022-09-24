@@ -26,6 +26,7 @@ namespace Tg_shop_admin.Controller
         SqlConnection sqlConnection;
         public List<Products> prod = new List<Products>();
         public bool check_img { get; set; } = false;
+        public string list_admin { get; set; }
         public ProductController(ListBox box, PictureBox pict, PictureBox pic,TextBox infoedit,TextBox cost,PictureBox editPcb)
         {
             lists = box;
@@ -366,6 +367,7 @@ namespace Tg_shop_admin.Controller
             editcost.Text = "";
             GC.Collect();
         }
+
 
     }
 
