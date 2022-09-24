@@ -30,6 +30,8 @@ namespace Tg_shop_admin.Controller
             parseToString();
             var client = new TelegramBotClient("5338424699:AAG-UAM3s9SAXT1jQSkaYD59s1Pu87qWvqY");
             client.StartReceiving(Update, Error);
+            //getMember(client);
+            //client.GetChatMembersCountAsync()
         }
         Message message = new Message();
         private async Task Update(ITelegramBotClient botClient, Update update, CancellationToken token)
@@ -38,7 +40,7 @@ namespace Tg_shop_admin.Controller
             var message = update.Message;
 
 
-
+            //message.Chat.
             foreach (Products item in list_products)
             {
 
@@ -47,10 +49,10 @@ namespace Tg_shop_admin.Controller
                 Message messages = await botClient.SendPhotoAsync(
                 message.Chat.Id,
                 ms,
-                "<b>Товар: </b>" + item.Name+ "\n<i> Цена</i>: "+item.Cost + "\n<b> Связь с продавцом: </b>" + admin,
+                "<b>Товар: </b>" + item.Name+ "\n<b> Цена</b>: " + item.Cost + "\n<b> Связь с продавцом: </b>" + admin,
                 ParseMode.Html);
             }
-
+            //System.Windows.Forms.MessageBox.Show(botClient.GetChatMembersCountAsync(message.Chat.Id).ToString());
         }
         public Image ByteArrayToImage(byte[] data)
         {
@@ -70,6 +72,7 @@ namespace Tg_shop_admin.Controller
                 admin += admin_prod[i] + " , ";
             }
         }
+
 
     }
 }
