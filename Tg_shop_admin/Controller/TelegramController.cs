@@ -19,12 +19,15 @@ namespace Tg_shop_admin.Controller
     {
         //ProductController contrl;
         List<Products> list_products;
-        public string admin { get; set; } = "@jazziks , @dnipro2022";
+        public string admin { get; set; } 
         public string[] admins { get; set; } = { "@jazziks","ssss" };
+        public string[] admin_prod { get; set; }
         //List<Products> prod_tg = new List<Products>(contrl.prod);
-        public TelegramController(List<Products> products)
+        public TelegramController(List<Products> products, string[] amins)
         {
             list_products = products;
+            admin_prod = amins;
+            parseToString();
             var client = new TelegramBotClient("5338424699:AAG-UAM3s9SAXT1jQSkaYD59s1Pu87qWvqY");
             client.StartReceiving(Update, Error);
         }
@@ -59,6 +62,13 @@ namespace Tg_shop_admin.Controller
         {
             System.Windows.Forms.MessageBox.Show("Test");
             throw new NotImplementedException();
+        }
+        void parseToString()
+        {
+            for (int i = 0; i < admin_prod.Length; i++)
+            {
+                admin += admin_prod[i] + " , ";
+            }
         }
 
     }

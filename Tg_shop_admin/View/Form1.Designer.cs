@@ -54,6 +54,9 @@
             this.admins_textBox = new System.Windows.Forms.TextBox();
             this.addAdminbutton = new System.Windows.Forms.Button();
             this.DelAdmin_button = new System.Windows.Forms.Button();
+            this.seller_label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBoxAddProd.SuspendLayout();
@@ -284,7 +287,7 @@
             // Admin_listBox
             // 
             this.Admin_listBox.FormattingEnabled = true;
-            this.Admin_listBox.Location = new System.Drawing.Point(537, 288);
+            this.Admin_listBox.Location = new System.Drawing.Point(537, 301);
             this.Admin_listBox.Name = "Admin_listBox";
             this.Admin_listBox.Size = new System.Drawing.Size(120, 95);
             this.Admin_listBox.TabIndex = 15;
@@ -293,33 +296,68 @@
             // 
             this.admins_textBox.Location = new System.Drawing.Point(663, 300);
             this.admins_textBox.Name = "admins_textBox";
-            this.admins_textBox.Size = new System.Drawing.Size(100, 20);
+            this.admins_textBox.Size = new System.Drawing.Size(119, 20);
             this.admins_textBox.TabIndex = 16;
+            this.admins_textBox.TextChanged += new System.EventHandler(this.admins_textBox_TextChanged);
             // 
             // addAdminbutton
             // 
-            this.addAdminbutton.Location = new System.Drawing.Point(663, 327);
+            this.addAdminbutton.Enabled = false;
+            this.addAdminbutton.Location = new System.Drawing.Point(663, 332);
             this.addAdminbutton.Name = "addAdminbutton";
-            this.addAdminbutton.Size = new System.Drawing.Size(101, 23);
+            this.addAdminbutton.Size = new System.Drawing.Size(119, 23);
             this.addAdminbutton.TabIndex = 17;
-            this.addAdminbutton.Text = "button2";
+            this.addAdminbutton.Text = "Добавить продавца";
             this.addAdminbutton.UseVisualStyleBackColor = true;
             this.addAdminbutton.Click += new System.EventHandler(this.addAdminbutton_Click);
             // 
             // DelAdmin_button
             // 
-            this.DelAdmin_button.Location = new System.Drawing.Point(663, 356);
+            this.DelAdmin_button.Location = new System.Drawing.Point(663, 359);
             this.DelAdmin_button.Name = "DelAdmin_button";
-            this.DelAdmin_button.Size = new System.Drawing.Size(101, 23);
+            this.DelAdmin_button.Size = new System.Drawing.Size(119, 23);
             this.DelAdmin_button.TabIndex = 18;
-            this.DelAdmin_button.Text = "button2";
+            this.DelAdmin_button.Text = "Удалить продавца";
             this.DelAdmin_button.UseVisualStyleBackColor = true;
+            this.DelAdmin_button.Click += new System.EventHandler(this.DelAdmin_button_Click);
+            // 
+            // seller_label
+            // 
+            this.seller_label.AutoSize = true;
+            this.seller_label.Location = new System.Drawing.Point(690, 285);
+            this.seller_label.Name = "seller_label";
+            this.seller_label.Size = new System.Drawing.Size(57, 13);
+            this.seller_label.TabIndex = 19;
+            this.seller_label.Text = "Продавец";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.IndianRed;
+            this.label1.Location = new System.Drawing.Point(686, 320);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Начните с \'@\'";
+            this.label1.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(535, 285);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Все укзаные продацы:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.seller_label);
             this.Controls.Add(this.DelAdmin_button);
             this.Controls.Add(this.addAdminbutton);
             this.Controls.Add(this.admins_textBox);
@@ -333,7 +371,8 @@
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBoxAddProd);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "TG_Admin_Nikolai";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -375,6 +414,9 @@
         private System.Windows.Forms.TextBox admins_textBox;
         private System.Windows.Forms.Button addAdminbutton;
         private System.Windows.Forms.Button DelAdmin_button;
+        private System.Windows.Forms.Label seller_label;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -22,7 +22,8 @@ namespace Tg_shop_admin
         SqlCommand sqlCommand;
         SqlConnection sqlConnection;
         TelegramController telegramController;
-
+        public string[] list_admin { get; set; }
+        //public List<string> string_admin { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -63,7 +64,7 @@ namespace Tg_shop_admin
 
         private void button3_Click(object sender, EventArgs e)
         {
-           telegramController = new TelegramController(productController.prod);
+           telegramController = new TelegramController(productController.prod, list_admin);
             GC.Collect();
         }
 
@@ -73,15 +74,45 @@ namespace Tg_shop_admin
             productController.parse_product();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            //using (StreamReader reader = new StreamReader("admins.txt"))
+            //{
+            //    for (int i = 0; i < list_admin.Length; i++)
+            //    {
+            //        list_admin[i] = reader.ReadToEnd();
 
+            //    }
+            //    //while (!reader.EndOfStream)
+            //    //{
+            //    //    string_admin.Add(reader.ReadLine());
+            //    //}
+
+            //}
+            list_admin = File.ReadAllLines("admins.txt");
+            //StreamReader reader = new StreamReader("admins.txt");
+            //while (!reader.EndOfStream)
+            //{
+            //    string_admin.Add(reader.ReadLine());
+            //}
+            //reader.Close();
+            //string_admin = File.ReadAllLines("admins.txt").ToList();
+            //foreach (var item in string_admin)
+            //{
+            //    Admin_listBox.Items.Add(item);
+            //}
+            for (int i = 0; i < list_admin.Length; i++)
+            {
+                Admin_listBox.Items.Add(list_admin[i]);
+            }
+            
+            
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            if (!Char.IsDigit(number) && number != 8) 
             {
                 e.Handled = true;
             }
@@ -135,7 +166,77 @@ namespace Tg_shop_admin
 
         private void addAdminbutton_Click(object sender, EventArgs e)
         {
+            
+            if (admins_textBox.Text != "")
+            {
+                Admin_listBox.Items.Add(admins_textBox.Text);
+                //Array.Clear(list_admin, 0, list_admin.Length);
+                //list_admin[i] = Admin_listBox.Items[i].ToString();
+                //for (int i = 0; i < Admin_listBox.Items.Count; i++)
+                //{
+                //list_admin = Admin_listBox.Items[i] + ", ";
+                //}
+                //string_admin.Add(admins_textBox.Text);
+                list_admin = new string[Admin_listBox.Items.Count];
+                for (int i = 0; i < Admin_listBox.Items.Count; i++)
+                {
+                    list_admin[i] = Admin_listBox.Items[i].ToString();
+                }
+                admins_textBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Поле должно быть заполнено!");
+            }
 
+        }
+
+        private async void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            File.WriteAllLines("admins.txt", list_admin);
+        }
+
+        private void DelAdmin_button_Click(object sender, EventArgs e)
+        {
+
+            if (Admin_listBox.SelectedIndex != -1)
+            {
+                Admin_listBox.Items.RemoveAt(Admin_listBox.SelectedIndex);
+                //Array.Clear(list_admin, 0, list_admin.Length);
+                //for (int i = 0; i < Admin_listBox.Items.Count; i++)
+                //{
+                //list_admin[i] = Admin_listBox.Items[i].ToString();
+
+                //list_admin = Admin_listBox.Items[i] + ", ";
+                //}
+                //string_admin.Remove(Admin_listBox.SelectedItems.ToString());
+                //Admin_listBox.Update();
+                list_admin = new string[Admin_listBox.Items.Count];
+                for (int i = 0; i < Admin_listBox.Items.Count; i++)
+                {
+                    list_admin[i] = Admin_listBox.Items[i].ToString();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите продавца!");
+            }
+        }
+
+        private void admins_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (admins_textBox.Text.Contains("@"))
+            {
+
+                addAdminbutton.Enabled = true;
+                label1.Visible = false;
+            }
+            else
+            {
+                addAdminbutton.Enabled = false;
+
+                label1.Visible = true;
+            }
         }
     }
 }
